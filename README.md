@@ -1,6 +1,6 @@
 # swe1-app
 
-added Travis CI
+Testing Travis CI
 
 ## Testing
 
