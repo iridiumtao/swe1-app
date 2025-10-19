@@ -101,9 +101,7 @@ class TestQuestionViews:
         question = Question.objects.create(
             question_text="Test question.", pub_date=timezone.now()
         )
-        choice = Choice.objects.create(
-            question=question, choice_text="Test choice", votes=0
-        )
+        _ = Choice.objects.create(question=question, choice_text="Test choice", votes=0)
         url = reverse("polls:results", args=(question.id,))
         response = client.get(url)
         assert response.status_code == 200

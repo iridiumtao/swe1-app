@@ -3,8 +3,15 @@ python:
   - "3.13"
 install:
   - pip install -r requirements.txt
+# Run format, lint, and test coverage checks here
 script:
-  - pytest
+  - flake8 .                      # Check for linting errors first
+  - black --check .               # Check for formatting errors
+  - coverage run -m pytest        # Run tests under coverage
+
+# This command runs ONLY if the script section passes
+after_success:
+  - coveralls                     # Report coverage results
 deploy:
   provider: elasticbeanstalk
   access_key_id: $AWS_ACCESS_KEY_ID
