@@ -65,7 +65,7 @@ class TestQuestionViews:
         """
         If no questions exist, an appropriate message is displayed.
         """
-        response = client.get(reverse('polls:index'))
+        response = client.get(reverse("polls:index"))
         assert response.status_code == 200
         assert "No polls are available." in response.content.decode()
         assert b"latest_question_list" in response.content or len(response.content) >= 0
@@ -76,9 +76,9 @@ class TestQuestionViews:
         """
         question = Question.objects.create(
             question_text="Past question.",
-            pub_date=timezone.now() - datetime.timedelta(days=1)
+            pub_date=timezone.now() - datetime.timedelta(days=1),
         )
-        response = client.get(reverse('polls:index'))
+        response = client.get(reverse("polls:index"))
         assert response.status_code == 200
         assert question.question_text in response.content.decode()
 
@@ -87,10 +87,9 @@ class TestQuestionViews:
         The detail view of a question displays the question's text.
         """
         question = Question.objects.create(
-            question_text="Test question.",
-            pub_date=timezone.now()
+            question_text="Test question.", pub_date=timezone.now()
         )
-        url = reverse('polls:detail', args=(question.id,))
+        url = reverse("polls:detail", args=(question.id,))
         response = client.get(url)
         assert response.status_code == 200
         assert question.question_text in response.content.decode()
@@ -100,16 +99,12 @@ class TestQuestionViews:
         The results view displays the question and its choices.
         """
         question = Question.objects.create(
-            question_text="Test question.",
-            pub_date=timezone.now()
+            question_text="Test question.", pub_date=timezone.now()
         )
         choice = Choice.objects.create(
-            question=question,
-            choice_text="Test choice",
-            votes=0
+            question=question, choice_text="Test choice", votes=0
         )
-        url = reverse('polls:results', args=(question.id,))
+        url = reverse("polls:results", args=(question.id,))
         response = client.get(url)
         assert response.status_code == 200
         assert question.question_text in response.content.decode()
-
