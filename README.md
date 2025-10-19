@@ -3,8 +3,6 @@
 [![Build Status](https://app.travis-ci.com/iridiumtao/swe1-app.svg?token=WDPk8NaA3e3AEm6N3wdc&branch=main)](https://app.travis-ci.com/iridiumtao/swe1-app)
 [![Coverage Status](https://coveralls.io/repos/github/iridiumtao/swe1-app/badge.svg?branch=main)](https://coveralls.io/github/iridiumtao/swe1-app?branch=main)
 
-somerandomtexts
-
 ## Testing
 
 This project uses pytest for testing. To run the tests:
