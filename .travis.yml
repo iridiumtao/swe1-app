@@ -1,6 +1,6 @@
 language: python
 python:
-  - "3.11"
+  - "3.13"
 install:
   - pip install -r requirements.txt
 script:
@@ -9,6 +9,7 @@ deploy:
   provider: elasticbeanstalk
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: us-east-2
   bucket: $AWS_BUCKET_NAME
   edge: true # opt in to dpl v2
   on:
