@@ -3,3 +3,7 @@ Django==5.2.7
 sqlparse==0.5.3
 pytest==8.4.2
 pytest-django==4.11.1
+black
+flake8
+coverage
+coveralls
