@@ -11,3 +11,5 @@ deploy:
   secret_access_key: AWS_SECRET_ACCESS_KEY
   bucket: AWS_BUCKET_NAME
   edge: true # opt in to dpl v2
+  on:
+    branch: main
